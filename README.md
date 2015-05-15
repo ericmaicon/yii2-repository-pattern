@@ -67,22 +67,24 @@ You need to identify each repository that you have inside of repositories array.
 The final config section:
 
 ```php
-'repository' => [
-    'class' => 'ericmaicon\repository\Gateway',
-    'repositories' => [
-        'test' => [
-            'db' => 'db',
-        ],
-        'test2' => [
-            'db' => 'db2',
-            'tables' => [
-                'comment'
-            ]
-        ],
-        'test3' => [
-            'class' => 'ericmaicon\repository\session\SessionRepository',
-            'tables' => [
-                'user'
+'components' => [
+    'repository' => [
+        'class' => 'ericmaicon\repository\Gateway',
+        'repositories' => [
+            'test' => [
+                'db' => 'db',
+            ],
+            'test2' => [
+                'db' => 'db2',
+                'tables' => [
+                    'comment'
+                ]
+            ],
+            'test3' => [
+                'class' => 'ericmaicon\repository\session\SessionRepository',
+                'tables' => [
+                    'user'
+                ]
             ]
         ]
     ]
