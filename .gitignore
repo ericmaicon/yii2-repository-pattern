@@ -15,3 +15,6 @@ nbproject
 .buildpath
 .project
 .settings
+
+#vagrant
+.vagrant
