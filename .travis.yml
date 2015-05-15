@@ -16,6 +16,8 @@ before_script:
   - travis_retry composer install --no-interaction --prefer-source --dev
   - mysql -e 'create database test;'
   - mysql -e 'create database test2;'
+  - mysql -u root test < tests/data/test.sql
+  - mysql -u root test2 < tests/data/test2.sql
 
 script:
   - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover

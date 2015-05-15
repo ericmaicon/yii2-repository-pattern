@@ -4,6 +4,7 @@ namespace ericmaicon\repository;
 
 use Yii;
 use yii\base\Component;
+use yii\base\InvalidParamException;
 
 abstract class BaseRepository extends Component implements RepositoryInterface
 {
