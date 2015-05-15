@@ -23,14 +23,14 @@ new \yii\console\Application([
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;port=3306;dbname=test',
             'username' => 'root',
-            'password' => '123',
+            'password' => '',
             'charset' => 'utf8',
         ],
         'db2' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;port=3306;dbname=test2',
             'username' => 'root',
-            'password' => '123',
+            'password' => '',
             'charset' => 'utf8',
         ],
         'repository' => [
