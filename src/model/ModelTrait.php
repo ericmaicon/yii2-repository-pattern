@@ -1,6 +1,7 @@
 <?php
 
 namespace ericmaicon\repository\model;
+
 use yii\helpers\Inflector;
 use yii\helpers\StringHelper;
 use yii\base\InvalidConfigException;

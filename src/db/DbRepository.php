@@ -20,12 +20,12 @@ class DbRepository extends BaseRepository
      */
     public function init()
     {
-        if(count($this->tables) < 1) {
+        if (count($this->tables) < 1) {
             $schema = $this->getDb()->getSchema();
             $this->tables = $schema->tableNames;
         }
 
-        if(!Yii::$app->has($this->db)) {
+        if (!Yii::$app->has($this->db)) {
             throw new InvalidParamException('The DB need to be filled and with a valid Connection');
         }
 
@@ -57,7 +57,7 @@ class DbRepository extends BaseRepository
             ->all($this->getDb());
 
         $returnArray = [];
-        foreach($modelList as $model) {
+        foreach ($modelList as $model) {
             $modelInstance = new $modelClass;
             $modelInstance->setAttributes($model);
             $returnArray[] = $modelInstance;
@@ -97,7 +97,7 @@ class DbRepository extends BaseRepository
             ->all($this->getDb());
 
         $returnArray = [];
-        foreach($modelList as $model) {
+        foreach ($modelList as $model) {
             $modelInstance = new $modelClass;
             $modelInstance->setAttributes($model);
             $returnArray[] = $modelInstance;
@@ -113,14 +113,15 @@ class DbRepository extends BaseRepository
     {
         $keys = $model->primaryKey();
         $isNewRecord = true;
-        foreach($keys as $key) {
+        foreach ($keys as $key) {
             $isNewRecord = ($model->$key === null);
         }
 
-        if($isNewRecord)
+        if ($isNewRecord) {
             return $this->insert($model, $runValidation, $attributeNames);
-        else
+        } else {
             return $this->update($model, $runValidation, $attributeNames);
+        }
     }
 
     /**
@@ -180,7 +181,8 @@ class DbRepository extends BaseRepository
     {
         $keys = $model->primaryKey();
         if (empty($keys)) {
-            throw new Exception(get_class($this) . ' does not have a primary key. You should either define a primary key for the corresponding table or override the primaryKey() method.');
+            throw new Exception(get_class($this) . ' does not have a primary key. You should either define a primary
+             key for the corresponding table or override the primaryKey() method.');
         }
         if (!$asArray && count($keys) === 1) {
             return isset($model->attributes[$keys[0]]) ? $model->attributes[$keys[0]] : null;
@@ -193,5 +195,4 @@ class DbRepository extends BaseRepository
             return $values;
         }
     }
-
 }

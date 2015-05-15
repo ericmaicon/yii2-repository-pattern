@@ -34,7 +34,7 @@ class RepositoryModel extends Model
     {
         $repositoryName = static::repository();
 
-        if($repositoryName !== null) {
+        if ($repositoryName !== null) {
             return Yii::$app->repository->get($repositoryName);
         } else {
             return Yii::$app->repository->identify(static::tableName());
@@ -159,5 +159,4 @@ class RepositoryModel extends Model
     {
         return static::getRepository()->delete($this);
     }
-
 }

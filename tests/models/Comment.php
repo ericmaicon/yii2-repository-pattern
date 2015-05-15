@@ -24,5 +24,4 @@ class Comment extends RepositoryModel
             [['id', 'author', 'email', 'subject', 'body'], 'safe'],
         ];
     }
-
 }

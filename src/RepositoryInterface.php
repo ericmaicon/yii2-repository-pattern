@@ -72,5 +72,4 @@ interface RepositoryInterface
      * @return mixed
      */
     public function delete($model);
-
 }

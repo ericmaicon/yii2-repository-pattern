@@ -18,7 +18,7 @@ abstract class BaseRepository extends Component implements RepositoryInterface
     {
         parent::init();
 
-        if(count($this->tables) < 1) {
+        if (count($this->tables) < 1) {
             throw new InvalidParamException('The "tables" property needs to be filled.');
         }
     }
@@ -42,8 +42,8 @@ abstract class BaseRepository extends Component implements RepositoryInterface
      */
     public function hasTable($tableName)
     {
-        foreach($this->tables as $table) {
-            if($table == $tableName || '{{%' . $table . '}}' == $tableName) {
+        foreach ($this->tables as $table) {
+            if ($table == $tableName || '{{%' . $table . '}}' == $tableName) {
                 return true;
             }
         }

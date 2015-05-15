@@ -14,5 +14,4 @@ class User extends RepositoryModel
 
     public $id;
     public $name;
-
 }

@@ -16,11 +16,11 @@ class Sms extends RepositoryModel
     {
         return 'test2';
     }
+
     public function rules()
     {
         return [
             [['id', 'sms'], 'safe'],
         ];
     }
-
 }

@@ -126,5 +126,4 @@ class CommentCrudTest extends \PHPUnit_Framework_TestCase
         $comment = Comment::findOne(['id' => $id]);
         $comment->delete();
     }
-
 }

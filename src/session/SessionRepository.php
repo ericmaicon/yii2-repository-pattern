@@ -44,10 +44,11 @@ class SessionRepository extends BaseRepository
      */
     public function save($model, $runValidation = true, $attributeNames = null)
     {
-        if(isset($model->id))
+        if (isset($model->id)) {
             return $this->insert($model, $runValidation, $attributeNames);
-        else
+        } else {
             return $this->update($model, $runValidation, $attributeNames);
+        }
     }
 
     /**
@@ -79,5 +80,4 @@ class SessionRepository extends BaseRepository
         $sessionName = get_class($model);
         Yii::$app->session->remove($sessionName . "_" . $model->id);
     }
-
 }

@@ -24,9 +24,8 @@ class Gateway extends Component
         parent::init();
 
         foreach ($this->repositories as $name => $repository) {
-            if (!$repository instanceof RepositoryInterface) {
-
-                if(!array_key_exists('class', $repository)) {
+            if (!($repository instanceof RepositoryInterface)) {
+                if (!array_key_exists('class', $repository)) {
                     $repository['class'] = DbRepository::className();
                 }
 
@@ -59,7 +58,7 @@ class Gateway extends Component
     public function identify($tableName)
     {
         foreach ($this->repositories as $name => $repository) {
-            if($repository->hasTable($tableName)) {
+            if ($repository->hasTable($tableName)) {
                 return $repository;
             }
         }
