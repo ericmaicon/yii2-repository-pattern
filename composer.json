@@ -1,0 +1,34 @@
+{
+    "name": "ericmaicon/yii2-repository-pattern",
+    "description": "A repository pattern to Yii framework",
+    "keywords": [
+        "2amigos",
+        "yii",
+        "yii2",
+        "yii 2",
+        "widget",
+        "repository",
+        "pattern"
+    ],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "authors": [
+    {
+        "name": "Eric Maicon",
+        "email": "eric@ericmaicon.com.br",
+        "role": "Developer"
+    }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ericmaicon\\repository": "src"
+        }
+    }
+}
