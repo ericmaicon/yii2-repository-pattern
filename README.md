@@ -1,6 +1,7 @@
 # Repository Design Pattern for Yii2
 
 [![Latest Version](https://img.shields.io/github/tag/ericmaicon/yii2-repository-pattern.svg?style=flat-square&label=release)](https://github.com/ericmaicon/yii2-repository-pattern/tags)
+[![Build Status](https://img.shields.io/travis/ericmaicon/yii2-repository-pattern/master.svg?style=flat-square)](https://travis-ci.org/ericmaicon/yii2-repository-pattern)
 
 An implementation of repository design pattern.
 
@@ -54,6 +55,8 @@ You need to identify each repository that you have inside of repositories array.
 ],
 ```
 
+**Database Repositories** don't request *class* and *tables* attributes. If *tables* attribute was not filled, the repository will fetch by itself from the database. Otherwise, it is required to fill the *db* attribute to identify the related database.
+
 **Session Repository**
 ```php
 'test3' => [
@@ -63,8 +66,6 @@ You need to identify each repository that you have inside of repositories array.
     ]
 ]
 ```
-
-* **Database Repositories** don't request *class* and *tables* attributes. If *tables* attribute was not filled, the repository will fetch by itself from the database. Otherwise, it is required to fill the *db* attribute to identify the related database.
 
 The final config section:
 
@@ -119,7 +120,9 @@ class Sms extends RepositoryModel
 }
 ```
 
-After that, you can use to **save a record**:
+After that, you can"
+
+**Save**
 ```php
 $sms = new Sms();
 $sms->setAttributes([
@@ -128,7 +131,7 @@ $sms->setAttributes([
 $sms->save();
 ```
 
-**update a record**
+**Update**
 
 ```php
 $sms = Sms::findOne(['id' => $id]);
@@ -138,14 +141,14 @@ $sms->setAttributes([
 $sms->update();
 ```
 
-**delete a record**
+**Delete**
 
 ```php
 $sms = Sms::findOne(['id' => $id]);
 $sms->delete();
 ```
 
-**find records**:
+**Find**:
 ```php
 Sms::find(['id' => $id]);
 ```
@@ -157,6 +160,10 @@ Sms::findOne(['id' => $id]);
 ```php
 Sms::findAll([])
 ```
+
+## General Doubts
+
+* If you have the same table name in two different repositories and the repository was not set inside of the model, the model will respond to the first repository in the array.
 
 ## Testing
 

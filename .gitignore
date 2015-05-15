@@ -1,5 +1,6 @@
 vendor/
 tests/runtime/
+build/
 
 # cache directories
 Thumbs.db
