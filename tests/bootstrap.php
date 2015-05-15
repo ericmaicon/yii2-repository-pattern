@@ -36,7 +36,6 @@ new \yii\console\Application([
                 'test2' => [
                     'db' => 'db2',
                     'tables' => [
-                        'sms',
                         'comment'
                     ]
                 ]
