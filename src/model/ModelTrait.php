@@ -1,6 +1,6 @@
 <?php
 
-namespace ericmaicon\repository;
+namespace ericmaicon\repository\model;
 use yii\helpers\Inflector;
 use yii\helpers\StringHelper;
 use yii\base\InvalidConfigException;
@@ -14,6 +14,12 @@ use yii\base\InvalidConfigException;
  */
 trait ModelTrait
 {
+    /**
+     * @var array|null old attribute values indexed by attribute names.
+     * This is `null` if the record [[isNewRecord|is new]].
+     */
+    private $_oldAttributes;
+
     /**
      * @var array attribute values indexed by attribute names
      */
@@ -93,6 +99,59 @@ trait ModelTrait
             $this->_attributes[$name] = $value;
         } else {
             throw new InvalidParamException(get_class($this) . ' has no attribute named "' . $name . '".');
+        }
+    }
+
+    /**
+     * Returns the primary key name(s) for this AR class.
+     * The default implementation will return the primary key(s) as declared
+     * in the DB table that is associated with this AR class.
+     *
+     * If the DB table does not declare any primary key, you should override
+     * this method to return the attributes that you want to use as primary keys
+     * for this AR class.
+     *
+     * Note that an array should be returned even for a table with single primary key.
+     *
+     * @return string[] the primary keys of the associated database table.
+     */
+    public static function primaryKey()
+    {
+        return static::getTableSchema()->primaryKey;
+    }
+
+    /**
+     * PHP getter magic method.
+     * This method is overridden so that attributes and related objects can be accessed like properties.
+     *
+     * @param string $name property name
+     * @throws \yii\base\InvalidParamException if relation name is wrong
+     * @return mixed property value
+     * @see getAttribute()
+     */
+    public function __get($name)
+    {
+        if (isset($this->_attributes[$name]) || array_key_exists($name, $this->_attributes)) {
+            return $this->_attributes[$name];
+        } elseif ($this->hasAttribute($name)) {
+            return null;
+        } else {
+            return parent::__get($name);
+        }
+    }
+
+    /**
+     * PHP setter magic method.
+     * This method is overridden so that AR attributes can be accessed like properties.
+     * @param string $name property name
+     * @param mixed $value property value
+     */
+    public function __set($name, $value)
+    {
+        if ($this->hasAttribute($name)) {
+            $this->_attributes[$name] = $value;
+        } else {
+            parent::__set($name, $value);
         }
     }
 }

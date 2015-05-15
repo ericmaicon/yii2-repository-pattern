@@ -13,6 +13,12 @@ new \yii\console\Application([
     'basePath' => __DIR__,
     'vendorPath' => __DIR__ . '/../vendor',
     'components' => [
+        'cache' => [
+            'class' => 'yii\caching\FileCache',
+        ],
+        'session' => [
+            'class' => 'yii\web\CacheSession',
+        ],
         'db' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;port=3306;dbname=test',
@@ -37,6 +43,12 @@ new \yii\console\Application([
                     'db' => 'db2',
                     'tables' => [
                         'comment'
+                    ]
+                ],
+                'test3' => [
+                    'class' => 'ericmaicon\repository\session\SessionRepository',
+                    'tables' => [
+                        'user'
                     ]
                 ]
             ]

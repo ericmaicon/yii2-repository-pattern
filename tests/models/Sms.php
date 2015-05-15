@@ -2,7 +2,7 @@
 
 namespace tests\models;
 
-use ericmaicon\repository\RepositoryModel;
+use ericmaicon\repository\model\RepositoryModel;
 
 /**
  * Class Sms
@@ -15,6 +15,12 @@ class Sms extends RepositoryModel
     public static function repository()
     {
         return 'test2';
+    }
+    public function rules()
+    {
+        return [
+            [['id', 'sms'], 'safe'],
+        ];
     }
 
 }

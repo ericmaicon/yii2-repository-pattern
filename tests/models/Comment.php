@@ -2,7 +2,7 @@
 
 namespace tests\models;
 
-use ericmaicon\repository\RepositoryModel;
+use ericmaicon\repository\model\RepositoryModel;
 
 /**
  * Class Comment
@@ -17,5 +17,12 @@ class Comment extends RepositoryModel
     public $email;
     public $subject;
     public $body;
+
+    public function rules()
+    {
+        return [
+            [['id', 'author', 'email', 'subject', 'body'], 'safe'],
+        ];
+    }
 
 }

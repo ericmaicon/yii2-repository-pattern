@@ -4,14 +4,10 @@ namespace ericmaicon\repository;
 
 use Yii;
 use yii\base\Component;
-use yii\base\InvalidParamException;
 
-class Repository extends Component implements RepositoryInterface
+abstract class BaseRepository extends Component implements RepositoryInterface
 {
-    use DatabaseTrait;
-
-    public $tables;
-    public $db;
+    public $tables = [];
 
     /**
      * @inheritdoc
@@ -22,13 +18,8 @@ class Repository extends Component implements RepositoryInterface
     {
         parent::init();
 
-        if(!Yii::$app->has($this->db)) {
-            throw new InvalidParamException('The DB need to be filled and with a valid Connection');
-        }
-
-        if($this->tables === null) {
-            $schema = $this->getDb()->getSchema();
-            $this->tables = $schema->tableNames;
+        if(count($this->tables) < 1) {
+            throw new InvalidParamException('The "tables" property needs to be filled.');
         }
     }
 
@@ -58,10 +49,5 @@ class Repository extends Component implements RepositoryInterface
         }
 
         return false;
-    }
-
-    public function getModel()
-    {
-        
     }
 }

@@ -2,7 +2,7 @@
 
 namespace tests\models;
 
-use ericmaicon\repository\RepositoryModel;
+use ericmaicon\repository\model\RepositoryModel;
 
 /**
 * Class Author
@@ -15,4 +15,10 @@ class Author extends RepositoryModel
     public $id;
     public $name;
 
+    public function rules()
+    {
+        return [
+            [['id', 'name'], 'safe'],
+        ];
+    }
 }

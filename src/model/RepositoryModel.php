@@ -1,6 +1,6 @@
 <?php
 
-namespace ericmaicon\repository;
+namespace ericmaicon\repository\model;
 
 use Yii;
 use \yii\base\Model;
@@ -43,11 +43,11 @@ class RepositoryModel extends Model
 
     /**
      * @inheritdoc
-     * @return ActiveQuery the newly created [[ActiveQuery]] instance.
+     * @return Query the newly created [[ActiveQuery]] instance.
      */
-    public static function find()
+    public static function find($condition)
     {
-        return static::getRepository()->find();
+        return static::getRepository()->find(get_called_class(), $condition);
     }
 
     /**
@@ -56,7 +56,7 @@ class RepositoryModel extends Model
      */
     public static function findOne($condition)
     {
-        return static::getRepository()->findOne($condition);
+        return static::getRepository()->findOne(get_called_class(), $condition);
     }
 
     /**
@@ -65,7 +65,7 @@ class RepositoryModel extends Model
      */
     public static function findAll($condition)
     {
-        return static::getRepository()->findAll($condition);
+        return static::getRepository()->findAll(get_called_class(), $condition);
     }
 
     /**
@@ -92,7 +92,7 @@ class RepositoryModel extends Model
      */
     public function save($runValidation = true, $attributeNames = null)
     {
-        return static::getRepository()->save($runValidation, $attributeNames);
+        return static::getRepository()->save($this, $runValidation, $attributeNames);
     }
 
     /**
@@ -116,7 +116,7 @@ class RepositoryModel extends Model
      */
     public function insert($runValidation = true, $attributes = null)
     {
-        return static::getRepository()->insert($runValidation, $attributes);
+        return static::getRepository()->insert($this, $runValidation, $attributes);
     }
 
     /**
@@ -143,7 +143,7 @@ class RepositoryModel extends Model
      */
     public function update($runValidation = true, $attributeNames = null)
     {
-        return static::getRepository()->update($runValidation, $attributeNames);
+        return static::getRepository()->update($this, $runValidation, $attributeNames);
     }
 
     /**
@@ -157,7 +157,7 @@ class RepositoryModel extends Model
      */
     public function delete()
     {
-        return static::getRepository()->delete();
+        return static::getRepository()->delete($this);
     }
 
 }

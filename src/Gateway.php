@@ -2,6 +2,7 @@
 
 namespace ericmaicon\repository;
 
+use ericmaicon\repository\db\DbRepository;
 use Yii;
 use yii\base\Component;
 use yii\base\InvalidParamException;
@@ -26,7 +27,7 @@ class Gateway extends Component
             if (!$repository instanceof RepositoryInterface) {
 
                 if(!array_key_exists('class', $repository)) {
-                    $repository['class'] = Repository::className();
+                    $repository['class'] = DbRepository::className();
                 }
 
                 $this->repositories[$name] = Yii::createObject($repository);

@@ -2,7 +2,7 @@
 
 namespace tests\models;
 
-use ericmaicon\repository\RepositoryModel;
+use ericmaicon\repository\model\RepositoryModel;
 
 /**
  * Class Email
@@ -17,4 +17,10 @@ class Email extends RepositoryModel
         return 'email';
     }
 
+    public function rules()
+    {
+        return [
+            [['id', 'email'], 'safe'],
+        ];
+    }
 }
