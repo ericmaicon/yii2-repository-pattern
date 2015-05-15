@@ -35,10 +35,12 @@ to the `require` section of your `composer.json` file.
 Append in your config file:
 
 ```php
-'repository' => [
-	'class' => 'ericmaicon\repository\Gateway',
-    'repositories' => [
+'components' => [
+    'repository' => [
+        'class' => 'ericmaicon\repository\Gateway',
+        'repositories' => [
 
+        ]
     ]
 ]
 ```
